@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="mb-3 mt-4">
+        <label for="" class="form-label">Nomor BP</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nobp"
+          required
+          [(ngModel)]="nobp"
+          name="nobp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Nama Mahasiswa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nama"
+          required
+          [(ngModel)]="nama"
+          name="nama"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Jurusan</label>
+        <input
+          type="text"
+          class="form-control"
+          id="jurusan"
+          required
+          [(ngModel)]="jurusan"
+          name="jurusan"
+        />
+      </div>
+      <button (click)="save()" type="submit" class="btn btn-primary">
+        Simpan
+      </button>
+
+      <!-- <div *ngIf="submitted">
+        <div class="alert alert-primary" role="alert">
+          Data berhasil disimpan
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
