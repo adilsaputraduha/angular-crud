@@ -7,18 +7,21 @@ import { ApiService } from 'src/app/service/api.service';
   styleUrls: ['./add-mahasiswa.component.css'],
 })
 export class AddMahasiswaComponent implements OnInit {
-  nobp: '';
-  nama: '';
-  jurusan: '';
+  mahasiswa = {
+    nobp: '',
+    nama: '',
+    jurusan: '',
+  };
+
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {}
 
   save() {
     const data = {
-      nobp: this.nobp,
-      nama: this.nama,
-      jurusan: this.jurusan,
+      nobp: this.mahasiswa.nobp,
+      nama: this.mahasiswa.nama,
+      jurusan: this.mahasiswa.jurusan,
     };
 
     this.api.addDataMahasiswa(data).subscribe(

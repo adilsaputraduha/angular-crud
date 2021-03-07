@@ -11,15 +11,19 @@ export class ApiService {
     return this.http.get(`http://localhost:8080/mahasiswa`);
   }
 
-  addDataMahasiswa(data) {
-    return this.http.post(`http://localhost:8080/mahasiswa`, data);
+  getDataMahasiswaById(id) {
+    return this.http.get(`http://localhost:8080/mahasiswa/` + id);
   }
 
-  //   editDataMahasiswa() {
-  //     return this.http.get(`http://localhost:8080/mahasiswa`);
-  //   }
+  addDataMahasiswa(data) {
+    return this.http.post(`http://localhost:8080/mahasiswa/`, data);
+  }
 
-  // deleteDataMahasiswa(id) {
-  //   return this.http.get();
-  // }
+  editDataMahasiswa(id, data) {
+    return this.http.put(`http://localhost:8080/mahasiswa/edit/` + id, data);
+  }
+
+  deleteDataMahasiswa(data) {
+    return this.http.post(`http://localhost:8080/mahasiswa/delete/`, data);
+  }
 }

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/service/api.service';
   styleUrls: ['./list-mahasiswa.component.css'],
 })
 export class ListMahasiswaComponent implements OnInit {
-  currentMahasiswa: Object;
+  currentMahasiswa;
 
   constructor(private api: ApiService) {}
 
