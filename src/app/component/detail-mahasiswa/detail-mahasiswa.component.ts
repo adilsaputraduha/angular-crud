@@ -9,7 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetailMahasiswaComponent implements OnInit {
   currentMahasiswa = null;
-  nobp = null;
+  mahasiswa = {
+    nobp: '',
+    nama: '',
+    jurusan: '',
+  };
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
@@ -24,7 +28,9 @@ export class DetailMahasiswaComponent implements OnInit {
     this.api.getDataMahasiswaById(nobp).subscribe(
       (data) => {
         this.currentMahasiswa = data['data'];
-        this.nobp = nobp;
+        this.mahasiswa.nobp = nobp;
+        this.mahasiswa.nama = data['data'][0]['nama'];
+        this.mahasiswa.jurusan = data['data'][0]['jurusan'];
         console.log(data);
       },
       (error) => {
@@ -33,8 +39,26 @@ export class DetailMahasiswaComponent implements OnInit {
     );
   }
 
+  edit() {
+    this.api
+      .editDataMahasiswa({
+        nobp: this.mahasiswa.nobp,
+        nama: this.mahasiswa.nama,
+        jurusan: this.mahasiswa.jurusan,
+      })
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.router.navigate(['/mahasiswa']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
   delete() {
-    this.api.deleteDataMahasiswa({ nobp: this.nobp }).subscribe(
+    this.api.deleteDataMahasiswa({ nobp: this.mahasiswa.nobp }).subscribe(
       (response) => {
         console.log(response);
         this.router.navigate(['/mahasiswa']);

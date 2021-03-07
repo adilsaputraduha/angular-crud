@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-mahasiswa',
@@ -13,7 +14,7 @@ export class AddMahasiswaComponent implements OnInit {
     jurusan: '',
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -27,6 +28,7 @@ export class AddMahasiswaComponent implements OnInit {
     this.api.addDataMahasiswa(data).subscribe(
       (response) => {
         console.log(response);
+        this.router.navigate(['/mahasiswa']);
       },
       (error) => {
         console.log(error);

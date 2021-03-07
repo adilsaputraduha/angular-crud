@@ -19,8 +19,8 @@ export class ApiService {
     return this.http.post(`http://localhost:8080/mahasiswa/`, data);
   }
 
-  editDataMahasiswa(id, data) {
-    return this.http.put(`http://localhost:8080/mahasiswa/edit/` + id, data);
+  editDataMahasiswa(data) {
+    return this.http.post(`http://localhost:8080/mahasiswa/edit/`, data);
   }
 
   deleteDataMahasiswa(data) {
